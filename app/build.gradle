@@ -80,13 +80,13 @@ task copyCustomResources(type: Copy) {
 android {
     //Trigger the licenseFormat task at least once in any compile phase
     applicationVariants.all { variant ->
-        variant.javaCompiler.dependsOn(rootProject.licenseFormat)
+        variant.javaCompileProvider.get().dependsOn(rootProject.licenseFormat)
     }
 
     preBuild.dependsOn(copyCustomResources)
 
     compileSdkVersion = rootProject.ext.compileSdkVersion
-    buildToolsVersion = '28.0.3'
+    buildToolsVersion = '29.0.5'
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
